@@ -12,7 +12,13 @@ enum CreationError {
 
 impl PositiveNonzeroInteger {
     fn new(value: i64) -> Result<PositiveNonzeroInteger, CreationError> {
-        Ok(PositiveNonzeroInteger(value as u64))
+        if value == 0 {
+            return Err(CreationError::Zero);
+        } else if value < 0 {
+            return Err(CreationError::Negative);
+        } else {
+            Ok(PositiveNonzeroInteger(value as u64))
+        }
     }
 }
 
@@ -25,21 +31,6 @@ fn test_creation() {
     );
     assert_eq!(Err(CreationError::Zero), PositiveNonzeroInteger::new(0));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // `PositiveNonzeroInteger::new` is always creating a new instance and returning an `Ok` result.
 // It should be doing some checking, returning an `Err` result if those checks fail, and only
