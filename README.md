@@ -31,7 +31,7 @@ curl -L https://git.io/rustlings | bash -s mypath/
 
 This will install Rustlings and give you access to the `rustlings` command. Run it to get started!
 
-## Windows/Manually
+## Manually
 
 Basically: Clone the repository, checkout to the latest tag, run `cargo install`.
 
@@ -51,16 +51,16 @@ The exercises are sorted by topic and can be found in the subdirectory `rustling
 The task is simple. Most exercises contain an error that keep it from compiling, and it's up to you to fix it! Some exercises are also ran as tests, but rustlings handles them all the same. To run the exercises in the recommended order, execute:
 
 ```bash
-rustlings verify
-```
-
-This will try to verify the completion of every exercise in a predetermined order (what we think is best for newcomers). If you don't want to rerun `verify` every time you change a file, you can run:
-
-```bash
 rustlings watch
 ```
 
-This will do the same as verify, but won't quit after running and instead automatically rerun as soon as you change a file in the `exercises/` directory.
+This will try to verify the completion of every exercise in a predetermined order (what we think is best for newcomers). It will also rerun automatically every time you change a file in the `exercises/` directory. If you want to only run it once, you can use:
+
+```bash
+rustlings verify
+```
+
+This will do the same as watch, but it'll quit after running.
 
 In case you want to go by your own order, or want to only verify a single exercise, you can run:
 
@@ -94,31 +94,7 @@ If you are interested in improving or adding new ones, please feel free to contr
 
 ## Contributing
 
-### Adding an exercise
-
-First step is to add the exercise! Call it `exercises/yourTopic/yourTopicN.rs`, make sure to
-put in some helpful links, and link to sections of the book in `exercises/yourTopic/README.md`.
-
-Next you want to make sure it runs when using `rustlings`. All exercises are stored in `info.toml`, under the `exercises` array. They're ordered by the order they're ran when using `rustlings verify`.
-
-You want to make sure where in the file you add your exercise. If you're not sure, add it at the bottom and ask in your pull request. To add an exercise, edit the file like this:
-```diff
-  ...
-+ [[exercises]]
-+ path = "exercises/yourTopic/yourTopicN.rs"
-+ mode = "compile"
-  ...
-```
-
-The `mode` attribute decides whether Rustlings will only compile your exercise, or compile and test it. If you have tests to verify in your exercise, choose `test`, otherwise `compile`.
-
-That's all! Feel free to put up a pull request.
-
-### Working on the source code
-
-`rustlings` is basically a glorified `rustc` wrapper. Therefore the source code
-isn't really that complicated since the bulk of the work is done by `rustc`.
-`src/main.rs` contains a simple `clap` CLI that loads from `src/verify.rs` and `src/run.rs`.
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Credits
 
