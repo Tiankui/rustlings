@@ -5,38 +5,8 @@
 
 fn main() {
     let numbers = (1, 2, 3);
-    println!("The second number is {}", ???);
+    println!("The second number is {}", numbers.1);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // While you could use a destructuring `let` for the tuple here, try
 // indexing into it instead, as explained in the last example of the
